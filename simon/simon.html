@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Seinmon Says</title>
+<style type="text/css">
+.boxed0 {
+  background-color: white;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  TOP:0px;
+  LEFT:0px;
+  visibility: hidden;
+}
+
+
+.boxed1 {
+  background-color: white;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  TOP:0px;
+  LEFT:200px;
+  visibility: hidden;
+}
+
+.boxed2 {
+  background-color: white;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  TOP: 200px;
+  LEFT:0px;
+  visibility: hidden;
+}
+
+
+.boxed3 {
+  background-color: white;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  TOP:200px;
+  LEFT:200px;
+  visibility: hidden;
+}
+.boxed4 {
+  background-color: white;
+  width: 300px;
+  height: 200px;
+  position: absolute;
+  TOP:100px;
+  LEFT:450px;
+
+}
+
+.button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #585858;
+  border: none;
+  border-radius: 1px;
+  box-shadow: 0 6px #999;
+  position: absolute;
+  TOP:420px;
+  LEFT:0px;
+}
+.button2 {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #585858;
+  border: none;
+  border-radius: 1px;
+  box-shadow: 0 6px #999;
+  position: absolute;
+  TOP:420px;
+  LEFT: 100px;
+  visibility: hidden;
+}
+.imgButton{
+  width: 200px;
+  height: 200px;
+}
+.imgButton:active{
+  width: 185px;
+  height: 185px;
+}
+.levelUp{
+  visibility: hidden;
+}
+.youLost{
+  visibility: hidden;
+}
+
+</style>
+</head>
+<body>
+  <script>
+      var hidden = false;
+      var turnCounter = 1;
+      var lost = false;
+      var userPicks = [];
+      var n = 0;
+      var boxesChosen = [];
+      var boxCounter = 0;
+      var sounds = ["1.mp3","2.mp3","3.mp3","4.mp3","5.mp3","6.mp3","7.mp3","0.mp3"]
+      function reloadPage(){
+        location.reload();
+      }
+      function action() {
+        hidden = !hidden;
+        if(hidden) {
+            document.getElementById('startButton').style.visibility = 'hidden';
+            document.getElementById('rules').style.visibility = 'hidden';
+            document.getElementById('box0').style.visibility = 'visible';
+            document.getElementById('box1').style.visibility = 'visible';
+            document.getElementById('box2').style.visibility = 'visible';
+            document.getElementById('box3').style.visibility = 'visible';
+            setTimeout(lightUp, 2000);
+        }else {
+            document.getElementById('startButton').style.visibility = 'visible';
+            document.getElementById('rules').style.visibility = 'visible';
+
+        }
+      }
+
+
+
+      function getRandomArbitrary(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+
+      function lightUp() {
+        var i = 0;
+        var boxNum = Math.round(getRandomArbitrary(0,4) - .5);
+        var string = ("box" + boxNum.toString());
+        boxesChosen.push(string.toString());
+        setTimeout(boxHide,1300);
+      }
+
+      function boxHide() {
+          console.log(boxesChosen);
+          console.log("box added to array " + boxesChosen[boxCounter]);
+          for (boxCounter in boxesChosen){
+            if(boxesChosen[boxCounter] == "box0"){
+              setTimeout(box0Hide, boxCounter*1200)
+            }
+            if(boxesChosen[boxCounter] == "box1"){
+              setTimeout(box1Hide, boxCounter*1200)
+
+            }
+            if(boxesChosen[boxCounter] == "box2"){
+              setTimeout(box2Hide, boxCounter*1200)
+
+            }
+            if(boxesChosen[boxCounter] == "box3"){
+              setTimeout(box3Hide, boxCounter*1200)
+
+            }
+          }
+      }
+      function box0Hide(){
+        if(navigator.userAgent.match("Chrome")){
+          setTimeout(function(){document.getElementById("box0").style.WebkitTransform  = "rotate("+7+"deg)"}, 100);
+          setTimeout(function(){document.getElementById("box0").style.WebkitTransform  = "rotate("+(-7)+"deg)"}, 200);
+          setTimeout(function(){document.getElementById("box0").style.WebkitTransform  = "rotate("+(7)+"deg)"}, 300);
+          setTimeout(function(){document.getElementById("box0").style.WebkitTransform  = "rotate("+(0)+"deg)"}, 400);
+      	}
+        else if(navigator.userAgent.match("Firefox")){
+          setTimeout(function(){document.getElementById("box0").style.MozTransform  = "rotate("+7+"deg)"}, 100);
+          setTimeout(function(){document.getElementById("box0").style.MozTransform  = "rotate("+(-7)+"deg)"}, 200);
+          setTimeout(function(){document.getElementById("box0").style.MozTransform  = "rotate("+(7)+"deg)"}, 300);
+          setTimeout(function(){document.getElementById("box0").style.MozTransform  = "rotate("+(0)+"deg)"}, 400);
+      	}
+        else if(navigator.userAgent.match("MSIE")){
+          setTimeout(function(){document.getElementById("box0").style.msTransform  = "rotate("+7+"deg)"}, 100);
+          setTimeout(function(){document.getElementById("box0").style.msTransform  = "rotate("+(-7)+"deg)"}, 200);
+          setTimeout(function(){document.getElementById("box0").style.msTransform  = "rotate("+(7)+"deg)"}, 300);
+          setTimeout(function(){document.getElementById("box0").style.msTransform  = "rotate("+(0)+"deg)"}, 400);
+      	}
+        else if(navigator.userAgent.match("Opera")){
+          setTimeout(function(){document.getElementById("box0").style.OTransform  = "rotate("+7+"deg)"}, 100);
+          setTimeout(function(){document.getElementById("box0").style.OTransform  = "rotate("+(-7)+"deg)"}, 200);
+          setTimeout(function(){document.getElementById("box0").style.OTransform  = "rotate("+(7)+"deg)"}, 300);
+          setTimeout(function(){document.getElementById("box0").style.OTransform  = "rotate("+(0)+"deg)"}, 400);
+      	}
+        else {
+          setTimeout(function(){document.getElementById("box0").style.transform  = "rotate("+7+"deg)"}, 100);
+          setTimeout(function(){document.getElementById("box0").style.transform  = "rotate("+(-7)+"deg)"}, 200);
+          setTimeout(function(){document.getElementById("box0").style.transform  = "rotate("+(7)+"deg)"}, 300);
+          setTimeout(function(){document.getElementById("box0").style.transform  = "rotate("+(0)+"deg)"}, 400);
+      	}
+
+      }
+      function box1Hide(){
+        if(navigator.userAgent.match("Chrome")){
+          setTimeout(function(){document.getElementById("box1").style.WebkitTransform  = "rotate("+7+"deg)"}, 100);
+          setTimeout(function(){document.getElementById("box1").style.WebkitTransform  = "rotate("+(-7)+"deg)"}, 200);
+          setTimeout(function(){document.getElementById("box1").style.WebkitTransform  = "rotate("+(7)+"deg)"}, 300);
+          setTimeout(function(){document.getElementById("box1").style.WebkitTransform  = "rotate("+(0)+"deg)"}, 400);
+      	}
+        else if(navigator.userAgent.match("Firefox")){
+          setTimeout(function(){document.getElementById("box1").style.MozTransform  = "rotate("+7+"deg)"}, 100);
+          setTimeout(function(){document.getElementById("box1").style.MozTransform  = "rotate("+(-7)+"deg)"}, 200);
+          setTimeout(function(){document.getElementById("box1").style.MozTransform  = "rotate("+(7)+"deg)"}, 300);
+          setTimeout(function(){document.getElementById("box1").style.MozTransform  = "rotate("+(0)+"deg)"}, 400);
+      	}
+        else if(navigator.userAgent.match("MSIE")){
+          setTimeout(function(){document.getElementById("box1").style.msTransform  = "rotate("+7+"deg)"}, 100);
+          setTimeout(function(){document.getElementById("box1").style.msTransform  = "rotate("+(-7)+"deg)"}, 200);
+          setTimeout(function(){document.getElementById("box1").style.msTransform  = "rotate("+(7)+"deg)"}, 300);
+          setTimeout(function(){document.getElementById("box1").style.msTransform  = "rotate("+(0)+"deg)"}, 400);
+      	}
+        else if(navigator.userAgent.match("Opera")){
+          setTimeout(function(){document.getElementById("box1").style.OTransform  = "rotate("+7+"deg)"}, 100);
+          setTimeout(function(){document.getElementById("box1").style.OTransform  = "rotate("+(-7)+"deg)"}, 200);
+          setTimeout(function(){document.getElementById("box1").style.OTransform  = "rotate("+(7)+"deg)"}, 300);
+          setTimeout(function(){document.getElementById("box1").style.OTransform  = "rotate("+(0)+"deg)"}, 400);
+      	}
+        else {
+          setTimeout(function(){document.getElementById("box1").style.transform  = "rotate("+7+"deg)"}, 100);
+          setTimeout(function(){document.getElementById("box1").style.transform  = "rotate("+(-7)+"deg)"}, 200);
+          setTimeout(function(){document.getElementById("box1").style.transform  = "rotate("+(7)+"deg)"}, 300);
+          setTimeout(function(){document.getElementById("box1").style.transform  = "rotate("+(0)+"deg)"}, 400);
+      	}
+      }
+      function box2Hide(){
+        if(navigator.userAgent.match("Chrome")){
+          setTimeout(function(){document.getElementById("box2").style.WebkitTransform  = "rotate("+7+"deg)"}, 100);
+          setTimeout(function(){document.getElementById("box2").style.WebkitTransform  = "rotate("+(-7)+"deg)"}, 200);
+          setTimeout(function(){document.getElementById("box2").style.WebkitTransform  = "rotate("+(7)+"deg)"}, 300);
+          setTimeout(function(){document.getElementById("box2").style.WebkitTransform  = "rotate("+(0)+"deg)"}, 400);
+      	}
+        else if(navigator.userAgent.match("Firefox")){
+          setTimeout(function(){document.getElementById("box2").style.MozTransform  = "rotate("+7+"deg)"}, 100);
+          setTimeout(function(){document.getElementById("box2").style.MozTransform  = "rotate("+(-7)+"deg)"}, 200);
+          setTimeout(function(){document.getElementById("box2").style.MozTransform  = "rotate("+(7)+"deg)"}, 300);
+          setTimeout(function(){document.getElementById("box2").style.MozTransform  = "rotate("+(0)+"deg)"}, 400);
+      	}
+        else if(navigator.userAgent.match("MSIE")){
+          setTimeout(function(){document.getElementById("box2").style.msTransform  = "rotate("+7+"deg)"}, 100);
+          setTimeout(function(){document.getElementById("box2").style.msTransform  = "rotate("+(-7)+"deg)"}, 200);
+          setTimeout(function(){document.getElementById("box2").style.msTransform  = "rotate("+(7)+"deg)"}, 300);
+          setTimeout(function(){document.getElementById("box2").style.msTransform  = "rotate("+(0)+"deg)"}, 400);
+      	}
+        else if(navigator.userAgent.match("Opera")){
+          setTimeout(function(){document.getElementById("box2").style.OTransform  = "rotate("+7+"deg)"}, 100);
+          setTimeout(function(){document.getElementById("box2").style.OTransform  = "rotate("+(-7)+"deg)"}, 200);
+          setTimeout(function(){document.getElementById("box2").style.OTransform  = "rotate("+(7)+"deg)"}, 300);
+          setTimeout(function(){document.getElementById("box2").style.OTransform  = "rotate("+(0)+"deg)"}, 400);
+      	}
+        else {
+          setTimeout(function(){document.getElementById("box2").style.transform  = "rotate("+7+"deg)"}, 100);
+          setTimeout(function(){document.getElementById("box2").style.transform  = "rotate("+(-7)+"deg)"}, 200);
+          setTimeout(function(){document.getElementById("box2").style.transform  = "rotate("+(7)+"deg)"}, 300);
+          setTimeout(function(){document.getElementById("box2").style.transform  = "rotate("+(0)+"deg)"}, 400);
+      	}
+      }
+      function box3Hide(){
+        if(navigator.userAgent.match("Chrome")){
+          setTimeout(function(){document.getElementById("box3").style.WebkitTransform  = "rotate("+7+"deg)"}, 100);
+          setTimeout(function(){document.getElementById("box3").style.WebkitTransform  = "rotate("+(-7)+"deg)"}, 200);
+          setTimeout(function(){document.getElementById("box3").style.WebkitTransform  = "rotate("+(7)+"deg)"}, 300);
+          setTimeout(function(){document.getElementById("box3").style.WebkitTransform  = "rotate("+(0)+"deg)"}, 400);
+      	}
+        else if(navigator.userAgent.match("Firefox")){
+          setTimeout(function(){document.getElementById("box3").style.MozTransform  = "rotate("+7+"deg)"}, 100);
+          setTimeout(function(){document.getElementById("box3").style.MozTransform  = "rotate("+(-7)+"deg)"}, 200);
+          setTimeout(function(){document.getElementById("box3").style.MozTransform  = "rotate("+(7)+"deg)"}, 300);
+          setTimeout(function(){document.getElementById("box3").style.MozTransform  = "rotate("+(0)+"deg)"}, 400);
+      	}
+        else if(navigator.userAgent.match("MSIE")){
+          setTimeout(function(){document.getElementById("box3").style.msTransform  = "rotate("+7+"deg)"}, 100);
+          setTimeout(function(){document.getElementById("box3").style.msTransform  = "rotate("+(-7)+"deg)"}, 200);
+          setTimeout(function(){document.getElementById("box3").style.msTransform  = "rotate("+(7)+"deg)"}, 300);
+          setTimeout(function(){document.getElementById("box3").style.msTransform  = "rotate("+(0)+"deg)"}, 400);
+      	}
+        else if(navigator.userAgent.match("Opera")){
+          setTimeout(function(){document.getElementById("box3").style.OTransform  = "rotate("+7+"deg)"}, 100);
+          setTimeout(function(){document.getElementById("box3").style.OTransform  = "rotate("+(-7)+"deg)"}, 200);
+          setTimeout(function(){document.getElementById("box3").style.OTransform  = "rotate("+(7)+"deg)"}, 300);
+          setTimeout(function(){document.getElementById("box3").style.OTransform  = "rotate("+(0)+"deg)"}, 400);
+      	}
+        else {
+          setTimeout(function(){document.getElementById("box3").style.transform  = "rotate("+7+"deg)"}, 100);
+          setTimeout(function(){document.getElementById("box3").style.transform  = "rotate("+(-7)+"deg)"}, 200);
+          setTimeout(function(){document.getElementById("box3").style.transform  = "rotate("+(7)+"deg)"}, 300);
+          setTimeout(function(){document.getElementById("box3").style.transform  = "rotate("+(0)+"deg)"}, 400);
+      	}
+      }
+      function randomSound(){
+        var randomSound = Math.round(getRandomArbitrary(0,8) - .5);
+        var audio = new Audio("sounds/" + sounds[randomSound]);
+        console.log(sounds[randomSound]);
+        audio.play();
+      }
+      function box0Click(){
+        userPicks.push("box0");
+        if (userPicks[n] == boxesChosen[n]){
+          n++;
+          if(n == boxesChosen.length){
+            turnCounter++;
+            console.log("next level");
+            document.getElementById('levelUp').style.visibility = 'visible';
+            setTimeout(function(){document.getElementById('levelUp').style.visibility = 'hidden';}, 700);
+            userPicks = [];
+            n = 0;
+            randomSound();
+            setTimeout(lightUp, 2000);
+          }
+        }
+        else{
+          document.getElementById('youLost').style.visibility = 'visible';
+          document.getElementById('restartButton').style.visibility = 'visible';
+
+        }
+      }
+      function box1Click(){
+        userPicks.push("box1");
+        if (userPicks[n] == boxesChosen[n]){
+          n++;
+          if(n == boxesChosen.length){
+            turnCounter++;
+            console.log("next level");
+            document.getElementById('levelUp').style.visibility = 'visible';
+            setTimeout(function(){document.getElementById('levelUp').style.visibility = 'hidden';}, 700);
+            userPicks = [];
+            n = 0;
+            randomSound();
+            setTimeout(lightUp, 2000);
+          }
+        }
+        else{
+          document.getElementById('youLost').style.visibility = 'visible';
+          document.getElementById('restartButton').style.visibility = 'visible';
+
+        }
+      }
+      function box2Click(){
+        userPicks.push("box2");
+        if (userPicks[n] == boxesChosen[n]){
+          n++;
+          if(n == boxesChosen.length){
+            turnCounter++;
+            console.log("next level");
+            document.getElementById('levelUp').style.visibility = 'visible';
+            setTimeout(function(){document.getElementById('levelUp').style.visibility = 'hidden';}, 700);
+            userPicks = [];
+            n = 0;
+            randomSound();
+            setTimeout(lightUp, 2000);
+        }
+      }
+      else{
+        document.getElementById('youLost').style.visibility = 'visible';
+        document.getElementById('restartButton').style.visibility = 'visible';
+
+      }
+    }
+      function box3Click(){
+        userPicks.push("box3");
+
+        if (userPicks[n] == boxesChosen[n]){
+          n++;
+          if(n == boxesChosen.length){
+            turnCounter++;
+            console.log("next level");
+            document.getElementById('levelUp').style.visibility = 'visible';
+            setTimeout(function(){document.getElementById('levelUp').style.visibility = 'hidden';}, 700);
+            userPicks = [];
+            n = 0;
+            randomSound();
+            setTimeout(lightUp, 2000);
+          }
+        }
+        else{
+          document.getElementById('youLost').style.visibility = 'visible';
+          document.getElementById('restartButton').style.visibility = 'visible';
+
+        }
+      }
+
+
+  </script>
+
+
+
+
+
+
+
+<div input type="button" class="button" id="startButton" value="play game" onclick="action();">Start Game</div>
+<div input type="button" class="button2" id="restartButton" value="restart" onclick="reloadPage();">Replay Game</div>
+
+
+
+<div class="boxed0" id="box0">
+ <img class="imgButton" src="simonpictures/jerry.png" alt="Jerry" onclick="box0Click();">
+</div>
+<div class="boxed1" id="box1">
+  <img class="imgButton" src="simonpictures/elaine.png" alt="elaine" onclick="box1Click();">
+</div>
+<div class="boxed2" id="box2">
+  <img class="imgButton" src="simonpictures/kramer.png" alt="kramer" onclick="box2Click();">
+</div>
+<div class="boxed3" id="box3" >
+  <img class="imgButton" src="simonpictures/george.png" alt="george" onclick="box3Click();">
+</div>
+<div class="boxed4" id="box4" >
+  <div class="levelUp" id="levelUp">Level Up</div>
+  <div class="youLost" id="youLost">You Lost</div>
+  <div class="rules" id="rules">A character will shake. press on the character. If you press the right one you will go to the next level. The first character will shake but then another one will shake. press the two characters in order of the shake and you will advance another level. continue this process until you lose.</div>
+</div>
+
+
+</body>
+</html>
