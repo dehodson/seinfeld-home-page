@@ -51,7 +51,23 @@
   position: absolute;
   TOP:100px;
   LEFT:450px;
-
+}
+.boxed5{
+  background-color: white;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  TOP:420px;
+  LEFT:300px;
+}
+.boxed6{
+  background-color: white;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  TOP:420px;
+  LEFT:300px;
+  visibility: hidden;
 }
 
 .button {
@@ -103,6 +119,25 @@
 .youLost{
   visibility: hidden;
 }
+.mute{
+  visibility: hidden;
+  width: 75px;
+  height: 75px;
+  cursor: pointer;
+}
+.sound{
+  width: 75px;
+  height: 75px;
+  cursor: pointer;
+}
+.sound:active{
+  width: 70px;
+  height: 70px;
+}
+.mute:active{
+  width: 70px;
+  height: 70px;
+}
 
 </style>
 </head>
@@ -116,6 +151,7 @@
       var boxesChosen = [];
       var boxCounter = 0;
       var sounds = ["1.mp3","2.mp3","3.mp3","4.mp3","5.mp3","6.mp3","7.mp3","0.mp3"]
+      var soundCounter = 1;
       function reloadPage(){
         location.reload();
       }
@@ -301,10 +337,12 @@
       	}
       }
       function randomSound(){
-        var randomSound = Math.round(getRandomArbitrary(0,8) - .5);
-        var audio = new Audio("sounds/" + sounds[randomSound]);
-        console.log(sounds[randomSound]);
-        audio.play();
+        if(soundCounter == 1){
+          var randomSound = Math.round(getRandomArbitrary(0,8) - .5);
+          var audio = new Audio("sounds/" + sounds[randomSound]);
+          console.log(sounds[randomSound]);
+          audio.play();
+        }
       }
       function box0Click(){
         userPicks.push("box0");
@@ -391,6 +429,16 @@
 
         }
       }
+      function soundOn(){
+        soundCounter = 1;
+        document.getElementById('mute').style.visibility = 'hidden';
+        document.getElementById('sound').style.visibility = 'visible';
+      }
+      function soundOff(){
+        soundCounter = 0;
+        document.getElementById('sound').style.visibility = 'hidden';
+        document.getElementById('mute').style.visibility = 'visible';
+      }
 
 
   </script>
@@ -423,7 +471,12 @@
   <div class="youLost" id="youLost">You Lost</div>
   <div class="rules" id="rules">A character will shake. press on the character. If you press the right one you will go to the next level. The first character will shake but then another one will shake. press the two characters in order of the shake and you will advance another level. continue this process until you lose.</div>
 </div>
-
+<div class="boxed5" id="box5">
+  <img class="sound" id="sound" src="simonpictures/sound.png" alt="sound" onclick="soundOff();">
+</div>
+<div class="boxed6" id="box6">
+  <img class="mute" id="mute" src="simonpictures/mute.png" alt="mute" onclick="soundOn();">
+</div>
 
 </body>
 </html>
