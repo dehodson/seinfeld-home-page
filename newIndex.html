@@ -63,6 +63,32 @@ body{
 <img src="pictures/jerryparts/righteye.png" alt="righteye" id="righteye" height="550" width="550">
 <!--<img src="pictures/jerryBig.png" alt="jerryBig" id="jerryBig" height="300" width="300" onclick="action('jerry');">
 <img src="pictures/kramerBig.png" alt="kramerBig" id="kramerBig" height="300" width="300" onclick="action('kramer');">-->
+<script>
+  window.interval = null;
+
+  function imgLoaded(imgElement) {
+    return imgElement.complete && imgElement.naturalHeight !== 0;
+  }
+
+  function checkImages(){
+    var parts  = ["jerrybase", "hair", "lefteye", "righteye"];
+    var loaded = true;
+
+    for(var i = 0; i < parts.length; i++){
+      if(imgLoaded(document.getElementById(parts[i])) == false){
+        loaded = false;
+        break;
+      }
+    }
+
+    if(loaded){
+      clearInterval(window.interval);
+      console.log("images loaded");
+    }
+  }
+
+  window.interval = setInterval(checkImages, 50);
+</script>
 
 <script src="jquery.js"></script>
 <script src="snake.js"></script>
