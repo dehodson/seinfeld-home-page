@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Seinake</title>
+  <title>&#9785; &#9785; &#9785; &#9785; &#9785; &#9785;</title>
 <style type="text/css">
 
 
@@ -23,6 +23,8 @@ body{
   left: 193px;
   position: absolute;
   z-index: 4;
+  transform: rotate(0deg) translate(0px, 0px);
+  transition: all 1s;
 }
 #hairContain{
   width: 310px;
@@ -32,11 +34,9 @@ body{
   z-index: 20;
   position: absolute;
 }
-#hairContain:hover + #hair{
-  /*animation: hairHoverAnime 1s infinite;
-  animation-delay: 1s;*/
-  transform: rotate(45deg)  translate(40px,-120px);
-  transition: all 1s;
+#hair.selected{
+  animation-delay: 1s;
+  transform: rotate(-50deg)  translate(-40px,-110px);
 }
 #upperHead{
   bottom: 172px;
@@ -117,9 +117,9 @@ body{
 
 
 @keyframes hairHoverAnime {
-    0%   {transform: rotate(45deg)  translate(40px,-120px);}
-    50%  {transform: rotate(50deg)  translate(40px,-120px);}
-    100% {transform: rotate(45deg)  translate(40px,-120px);}
+    0%   {transform: rotate(-50deg)  translate(-40px,-110px);}
+    50%  {transform: rotate(-55deg)  translate(-35px,-128px);}
+    100% {transform: rotate(-50deg)  translate(-40px,-110px);}
 
 }
 
@@ -130,7 +130,7 @@ body{
 <div id="cover"></div>
 <div class="jerryContain" id="jerrycontain">
 <img src="pictures/jerryhead/lowerHead.png" alt="lowerHead" id="lowerHead" >
-<div id="hairContain"></div>
+<div id="hairContain" onmouseover="select('hair')" onmouseout="deselect('hair')"></div>
 <img src="pictures/jerryhead/hair.png" alt="hair" id="hair" >
 <img src="pictures/jerryhead/leftEye.png" alt="leftEye" id="leftEye" >
 <!--<img src="pictures/jerryhead/rightEye.png" alt="rightEye" id="rightEye" >-->
@@ -145,8 +145,39 @@ body{
 <!--<img src="pictures/jerryBig.png" alt="jerryBig" id="jerryBig" height="300" width="300" onclick="action('jerry');">
 <img src="pictures/kramerBig.png" alt="kramerBig" id="kramerBig" height="300" width="300" onclick="action('kramer');">-->
 <script>
-  window.interval = null;
+  function select(element){
+    document.getElementById(element).className = "selected";
+  }
 
+  function deselect(element){
+    document.getElementById(element).className = "";
+  }
+
+  var phase = -1;
+
+  function animate(){
+    var parts  = ["lowerHead", "hair", "leftEye", "upperHead","tongue", "rightEyeLid"];
+    for(var i = 0; i < parts.length; i++){
+      var element = document.getElementById(parts[i]);
+      if(element.className == "selected"){
+        if(parts[i] == "hair"){
+          if(phase == -1){
+            element.style.transform = "rotate(-50deg)  translate(-40px,-110px)";
+          }else{
+            element.style.transform = "rotate(-55deg)  translate(-35px,-128px)";
+          }
+        }
+      }else{
+        if(parts[i] == "hair"){
+          element.style.transform = "rotate(0deg)  translate(0px, 0px)";
+        }
+      }
+    }
+    phase = phase * -1;
+  }
+
+  window.interval = null;
+  
   function imgLoaded(imgElement) {
     return imgElement.complete && imgElement.naturalHeight !== 0;
   }
@@ -167,6 +198,7 @@ body{
       console.log("images loaded");
       document.getElementById("cover").style.opacity = "0";
       setTimeout(function(){document.getElementById("cover").style.visibility = "hidden";}, 250);
+      setInterval(animate, 1000);
     }
   }
 
