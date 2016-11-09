@@ -8,57 +8,62 @@
 body{
   background-color: black;
 }
-
-#jerrybase{
-  margin: auto;
-  bottom: 0;
-  left: 0;
-  right: 0;
+.jerryContain{
+  width: 700px;
+  height: 700px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
   position: absolute;
   z-index: -1;
+  margin: auto;
 }
 #hair{
-  margin: auto;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  bottom: 299px;
+  left: 193px;
   position: absolute;
   z-index: 1;
 }
-#hair:hover{
+#hairContain{
+  width: 310px;
+  height: 180px;
+  bottom: 340px;
+  left: 195px;
+  z-index: 20;
+  position: absolute;
+}
+#hairContain:hover + #hair{
   animation: hairHoverAnime 1s infinite;
   animation-delay: 1s;
-  transform: rotate(45deg);
+  transform: rotate(45deg)  translate(40px,-120px);
   transition: all 1s;
 }
-#lefteye{
+#upperHead{
+  bottom: 172px;
+  left: 201px;
+  position: absolute;
+  z-index: 0;
+}
+#lowerHead{
   margin: auto;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  position: absolute;
+  z-index: 0;
+}
+
+#leftEye{
+  bottom: 290px;
+  left: 300px;
   position: absolute;
 }
-#righteye{
-  margin: auto;
-  bottom: 0;
-  left: 0;
-  right: 0;
+#rightEye{
+  bottom: 290px;
+  left: 387px;
   position: absolute;
 }
-#upperlip{
-  margin: auto;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  position: absolute;
-}
-#lowerlip{
-  margin: auto;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  position: absolute;
-}
+
 #cover{
   z-index: 100;
   background-color: black;
@@ -75,26 +80,25 @@ body{
 
 
 @keyframes hairHoverAnime {
-    0%   {transform: rotate(45deg);}
-    50%  {transform: rotate(50deg);}
-    100% {transform: rotate(45deg);}
+    0%   {transform: rotate(45deg)  translate(40px,-120px);}
+    50%  {transform: rotate(50deg)  translate(40px,-120px);}
+    100% {transform: rotate(45deg)  translate(40px,-120px);}
 
 }
-/*img:hover{
-  animation: headHoverAnime .2s infinite;
-}*/
+
 
 </style>
 </head>
 <body>
 <div id="cover"></div>
-
-<img src="pictures/jerryparts/jerrybase.png" alt="jerrybase" id="jerrybase" height="550" width="550" >
-<img src="pictures/jerryparts/hair.png" alt="hair" id="hair" height="550" width="550" >
-<img src="pictures/jerryparts/lefteye.png" alt="lefteye" id="lefteye" height="550" width="550">
-<img src="pictures/jerryparts/righteye.png" alt="righteye" id="righteye" height="550" width="550">
-<img src="pictures/jerryparts/upperlip.png" alt="righteye" id="righteye" height="550" width="550">
-<img src="pictures/jerryparts/lowerlip.png" alt="righteye" id="righteye" height="550" width="550">
+<div class="jerryContain" id="jerrycontain">
+<img src="pictures/jerryhead/lowerHead.png" alt="lowerHead" id="lowerHead" >
+<div id="hairContain"></div>
+<img src="pictures/jerryhead/hair.png" alt="hair" id="hair" >
+<img src="pictures/jerryhead/leftEye.png" alt="leftEye" id="leftEye" >
+<img src="pictures/jerryhead/rightEye.png" alt="rightEye" id="rightEye" >
+<img src="pictures/jerryhead/upperHead.png" alt="upperHead" id="upperHead" >
+</div>
 
 <!--<img src="pictures/jerryBig.png" alt="jerryBig" id="jerryBig" height="300" width="300" onclick="action('jerry');">
 <img src="pictures/kramerBig.png" alt="kramerBig" id="kramerBig" height="300" width="300" onclick="action('kramer');">-->
@@ -106,7 +110,7 @@ body{
   }
 
   function checkImages(){
-    var parts  = ["jerrybase", "hair", "lefteye", "righteye"];
+    var parts  = ["lowerHead", "hair", "leftEye", "rightEye", "upperHead"];
     var loaded = true;
 
     for(var i = 0; i < parts.length; i++){
@@ -127,7 +131,5 @@ body{
   window.interval = setInterval(checkImages, 50);
 </script>
 
-<script src="jquery.js"></script>
-<script src="snake.js"></script>
 </body>
 </html>
