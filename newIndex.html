@@ -22,7 +22,7 @@ body{
   bottom: 299px;
   left: 193px;
   position: absolute;
-  z-index: 1;
+  z-index: 4;
 }
 #hairContain{
   width: 310px;
@@ -42,7 +42,7 @@ body{
   bottom: 172px;
   left: 201px;
   position: absolute;
-  z-index: 0;
+  z-index: 3;
 }
 #lowerHead{
   margin: auto;
@@ -63,6 +63,43 @@ body{
   left: 387px;
   position: absolute;
 }
+#rightEyeLid{
+  bottom: 280px;
+  left: 382px;
+  position: absolute;
+  z-index: 4;
+}
+#rightEyeLidContain{
+  width: 65px;
+  height: 35px;
+  bottom: 280px;
+  left: 382px;
+  position: absolute;
+  z-index: 21;
+}
+#rightEyeLidContain:hover + #rightEyeLid{
+  transform: translateY(-28px) translateZ(0);
+  transition: all 1s;
+}
+#tongue{
+  bottom: 197px;
+  left: 330px;
+  position: absolute;
+  z-index: 2;
+}
+#tongueContain{
+  width: 100px;
+  height: 30px;
+  bottom: 177px;
+  left: 308px;
+  z-index: 20;
+  position: absolute;
+}
+#tongueContain:hover + #tongue{
+  transform: translateY(60px);;
+  transition: all .5s;
+}
+
 
 #cover{
   z-index: 100;
@@ -97,7 +134,12 @@ body{
 <img src="pictures/jerryhead/hair.png" alt="hair" id="hair" >
 <img src="pictures/jerryhead/leftEye.png" alt="leftEye" id="leftEye" >
 <img src="pictures/jerryhead/rightEye.png" alt="rightEye" id="rightEye" >
+<div id="rightEyeLidContain"></div>
+<img src="pictures/jerryhead/eyelid.png" alt="rightEyeLid" id="rightEyeLid" >
 <img src="pictures/jerryhead/upperHead.png" alt="upperHead" id="upperHead" >
+<div id="tongueContain"></div>
+<img src="pictures/jerryhead/tongue.png" alt="tongue" id="tongue" >
+
 </div>
 
 <!--<img src="pictures/jerryBig.png" alt="jerryBig" id="jerryBig" height="300" width="300" onclick="action('jerry');">
@@ -110,7 +152,7 @@ body{
   }
 
   function checkImages(){
-    var parts  = ["lowerHead", "hair", "leftEye", "rightEye", "upperHead"];
+    var parts  = ["lowerHead", "hair", "leftEye", "rightEye", "upperHead","tongue", "rightEyeLid"];
     var loaded = true;
 
     for(var i = 0; i < parts.length; i++){
