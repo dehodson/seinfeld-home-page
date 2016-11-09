@@ -24,7 +24,7 @@ body{
   position: absolute;
   z-index: 4;
   transform: rotate(0deg) translate(0px, 0px);
-  transition: all 1s;
+  transition: all .5s;
 }
 #hairContain{
   width: 310px;
@@ -150,7 +150,9 @@ body{
   }
 
   function deselect(element){
-    document.getElementById(element).className = "";
+    var el = document.getElementById(element);
+    el.className = "";
+    el.style     = "";
   }
 
   var phase = -1;
@@ -166,10 +168,6 @@ body{
           }else{
             element.style.transform = "rotate(-55deg)  translate(-35px,-128px)";
           }
-        }
-      }else{
-        if(parts[i] == "hair"){
-          element.style.transform = "rotate(0deg)  translate(0px, 0px)";
         }
       }
     }
@@ -198,7 +196,7 @@ body{
       console.log("images loaded");
       document.getElementById("cover").style.opacity = "0";
       setTimeout(function(){document.getElementById("cover").style.visibility = "hidden";}, 250);
-      setInterval(animate, 1000);
+      setInterval(animate, 500);
     }
   }
 
