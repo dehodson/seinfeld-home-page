@@ -23,7 +23,7 @@ body{
   bottom: 299px;
   left: 193px;
   position: absolute;
-  z-index: 4;
+  z-index: 5;
   transform: rotate(0deg) translate(0px, 0px);
   transition: all .5s;
 }
@@ -38,6 +38,18 @@ body{
 #hair.selected{
   animation-delay: 1s;
   transform: rotate(-50deg)  translate(-40px,-110px);
+}
+#brain{
+  bottom: 250px;
+  left:250px;
+  position: absolute;
+  z-index: 2;
+}
+#forehead{
+  bottom: 285px;
+  left: 248px;
+  position: absolute;
+  z-index: 5;
 }
 #upperHead{
   bottom: 172px;
@@ -58,11 +70,19 @@ body{
   bottom: 290px;
   left: 300px;
   position: absolute;
+  z-index: 3;
+}
+#leftEyeLid{
+  bottom: 279px;
+  left: 293px;
+  position: absolute;
+  z-index: 4;
 }
 #rightEye{
-  bottom: 290px;
-  left: 387px;
+  bottom: 289px;
+  left: 385px;
   position: absolute;
+  z-index: 3;
 }
 #rightEyeLid{
   bottom: 280px;
@@ -161,12 +181,16 @@ body{
 <div id="hairContain" onmouseover="select('hair')" onmouseout="deselect('hair')"></div>
 <img src="pictures/jerryhead/hair.png" alt="hair" id="hair" >
 <img src="pictures/jerryhead/leftEye.png" alt="leftEye" id="leftEye" >
-<!--<img src="pictures/jerryhead/rightEye.png" alt="rightEye" id="rightEye" >-->
+<img src="pictures/jerryhead/rightEye.png" alt="rightEye" id="rightEye" >
 <div id="rightEyeLidContain"></div>
-<img src="pictures/jerryhead/eyelid.png" alt="rightEyeLid" id="rightEyeLid" >
+<img src="pictures/jerryhead/rightEyeLid.png" alt="rightEyeLid" id="rightEyeLid" >
+<img src="pictures/jerryhead/leftEyeLid.png" alt="leftEyeLid" id="leftEyeLid" >
 <img src="pictures/jerryhead/upperHead.png" alt="upperHead" id="upperHead" >
 <div id="tongueContain"></div>
+
 <img src="pictures/jerryhead/tongue.png" alt="tongue" id="tongue" >
+<img src="pictures/jerryhead/forehead.png" alt="forehead" id="forehead" >
+<img src="pictures/jerryhead/brain.gif" alt="brain" id="brain" >
 <div id="tv1" class="tv"></div>
 <div id="tv2" class="tv"></div>
 
@@ -188,7 +212,7 @@ body{
   var phase = -1;
 
   function animate(){
-    var parts  = ["lowerHead", "hair", "leftEye", "upperHead","tongue", "rightEyeLid"];
+    var parts  = ["lowerHead", "hair", "leftEye","rightEye", "upperHead", "tongue", "rightEyeLid","leftEyeLid", "forehead" ];
     for(var i = 0; i < parts.length; i++){
       var element = document.getElementById(parts[i]);
       if(element.className == "selected"){
@@ -205,7 +229,7 @@ body{
   }
 
   window.interval = null;
-  
+
   function imgLoaded(imgElement) {
     return imgElement.complete && imgElement.naturalHeight !== 0;
   }
