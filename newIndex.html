@@ -20,10 +20,10 @@ body{
   perspective: 750px;
 }
 #hair{
-  bottom: 299px;
-  left: 193px;
+  bottom: 290px;
+  left: 192px;
   position: absolute;
-  z-index: 5;
+  z-index: 6;
   transform: rotate(0deg) translate(0px, 0px);
   transition: all .5s;
 }
@@ -77,6 +77,20 @@ body{
   left: 293px;
   position: absolute;
   z-index: 4;
+  transition: all 1s;
+}
+#leftEyeLidContain{
+  width: 65px;
+  height: 35px;
+  bottom: 280px;
+  left: 285px;
+  position: absolute;
+  z-index: 21;
+}
+
+#leftEyeLid.selected{
+  transform: translateY(-28px);
+
 }
 #rightEye{
   bottom: 289px;
@@ -89,18 +103,19 @@ body{
   left: 382px;
   position: absolute;
   z-index: 4;
+  transition: all 1s;
 }
 #rightEyeLidContain{
   width: 65px;
   height: 35px;
-  bottom: 280px;
-  left: 382px;
+  bottom: 283px;
+  left: 378px;
   position: absolute;
   z-index: 21;
 }
-#rightEyeLidContain:hover + #rightEyeLid{
+#rightEyeLid.selected{
   transform: translateY(-28px) translateZ(0);
-  transition: all 1s;
+
 }
 #tongue{
   bottom: 197px;
@@ -182,12 +197,13 @@ body{
 <img src="pictures/jerryhead/hair.png" alt="hair" id="hair" >
 <img src="pictures/jerryhead/leftEye.png" alt="leftEye" id="leftEye" >
 <img src="pictures/jerryhead/rightEye.png" alt="rightEye" id="rightEye" >
-<div id="rightEyeLidContain"></div>
+<!-- <div id="leftEyeLidContain"></div> -->
+<div id="rightEyeLidContain" onmouseover="select('rightEyeLid')" onmouseout="deselect('rightEyeLid')"></div>
 <img src="pictures/jerryhead/rightEyeLid.png" alt="rightEyeLid" id="rightEyeLid" >
+<div id="leftEyeLidContain" onmouseover="select('leftEyeLid')" onmouseout="deselect('leftEyeLid')"></div>
 <img src="pictures/jerryhead/leftEyeLid.png" alt="leftEyeLid" id="leftEyeLid" >
 <img src="pictures/jerryhead/upperHead.png" alt="upperHead" id="upperHead" >
 <div id="tongueContain"></div>
-
 <img src="pictures/jerryhead/tongue.png" alt="tongue" id="tongue" >
 <img src="pictures/jerryhead/forehead.png" alt="forehead" id="forehead" >
 <img src="pictures/jerryhead/brain.gif" alt="brain" id="brain" >
@@ -211,8 +227,10 @@ body{
 
   var phase = -1;
 
+
+  var partList = ["lowerHead", "hair", "leftEye","rightEye", "upperHead", "tongue", "rightEyeLid","leftEyeLid", "forehead" ];
   function animate(){
-    var parts  = ["lowerHead", "hair", "leftEye","rightEye", "upperHead", "tongue", "rightEyeLid","leftEyeLid", "forehead" ];
+    var parts  = partList;
     for(var i = 0; i < parts.length; i++){
       var element = document.getElementById(parts[i]);
       if(element.className == "selected"){
@@ -235,7 +253,7 @@ body{
   }
 
   function checkImages(){
-    var parts  = ["lowerHead", "hair", "leftEye", "upperHead","tongue", "rightEyeLid"];
+    var parts  = partList;
     var loaded = true;
 
     for(var i = 0; i < parts.length; i++){
