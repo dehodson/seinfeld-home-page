@@ -122,6 +122,7 @@ body{
   left: 330px;
   position: absolute;
   z-index: 2;
+  transition: all 2s;
 }
 #tongueContain{
   width: 100px;
@@ -131,9 +132,9 @@ body{
   z-index: 20;
   position: absolute;
 }
-#tongueContain:hover + #tongue{
+#tongue.selected{
   transform: translateY(60px);;
-  transition: all .5s;
+
 }
 
 
@@ -193,17 +194,22 @@ body{
 <div id="cover"></div>
 <div class="jerryContain" id="jerrycontain">
 <img src="pictures/jerryhead/lowerHead.png" alt="lowerHead" id="lowerHead" >
+<!--  hair image and div -->
 <div id="hairContain" onmouseover="select('hair')" onmouseout="deselect('hair')"></div>
 <img src="pictures/jerryhead/hair.png" alt="hair" id="hair" >
-<img src="pictures/jerryhead/leftEye.png" alt="leftEye" id="leftEye" >
+
+<!--  right eye and eye lid image and div -->
 <img src="pictures/jerryhead/rightEye.png" alt="rightEye" id="rightEye" >
-<!-- <div id="leftEyeLidContain"></div> -->
 <div id="rightEyeLidContain" onmouseover="select('rightEyeLid')" onmouseout="deselect('rightEyeLid')"></div>
 <img src="pictures/jerryhead/rightEyeLid.png" alt="rightEyeLid" id="rightEyeLid" >
+
+<!-- left eye and eyelid images and div -->
+<img src="pictures/jerryhead/leftEye.png" alt="leftEye" id="leftEye" >
 <div id="leftEyeLidContain" onmouseover="select('leftEyeLid')" onmouseout="deselect('leftEyeLid')"></div>
 <img src="pictures/jerryhead/leftEyeLid.png" alt="leftEyeLid" id="leftEyeLid" >
+
 <img src="pictures/jerryhead/upperHead.png" alt="upperHead" id="upperHead" >
-<div id="tongueContain"></div>
+<div id="tongueContain" onmouseover="select('tongue')" onmouseout="deselect('tongue')"></div>
 <img src="pictures/jerryhead/tongue.png" alt="tongue" id="tongue" >
 <img src="pictures/jerryhead/forehead.png" alt="forehead" id="forehead" >
 <img src="pictures/jerryhead/brain.gif" alt="brain" id="brain" >
