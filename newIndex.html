@@ -33,8 +33,8 @@ body{
   position: absolute;
 }
 #hairContain:hover + #hair{
-  animation: hairHoverAnime 1s infinite;
-  animation-delay: 1s;
+  /*animation: hairHoverAnime 1s infinite;
+  animation-delay: 1s;*/
   transform: rotate(45deg)  translate(40px,-120px);
   transition: all 1s;
 }
@@ -133,7 +133,7 @@ body{
 <div id="hairContain"></div>
 <img src="pictures/jerryhead/hair.png" alt="hair" id="hair" >
 <img src="pictures/jerryhead/leftEye.png" alt="leftEye" id="leftEye" >
-<img src="pictures/jerryhead/rightEye.png" alt="rightEye" id="rightEye" >
+<!--<img src="pictures/jerryhead/rightEye.png" alt="rightEye" id="rightEye" >-->
 <div id="rightEyeLidContain"></div>
 <img src="pictures/jerryhead/eyelid.png" alt="rightEyeLid" id="rightEyeLid" >
 <img src="pictures/jerryhead/upperHead.png" alt="upperHead" id="upperHead" >
@@ -152,7 +152,7 @@ body{
   }
 
   function checkImages(){
-    var parts  = ["lowerHead", "hair", "leftEye", "rightEye", "upperHead","tongue", "rightEyeLid"];
+    var parts  = ["lowerHead", "hair", "leftEye", "upperHead","tongue", "rightEyeLid"];
     var loaded = true;
 
     for(var i = 0; i < parts.length; i++){
