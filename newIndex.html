@@ -36,7 +36,6 @@ body{
   position: absolute;
 }
 #hair.selected{
-  animation-delay: 1s;
   transform: rotate(-50deg)  translate(-40px,-110px);
 }
 #brain{
@@ -96,13 +95,13 @@ body{
   bottom: 289px;
   left: 385px;
   position: absolute;
-  z-index: 3;
+  z-index: 4;
 }
 #rightEyeLid{
   bottom: 280px;
   left: 382px;
   position: absolute;
-  z-index: 4;
+  z-index: 5;
   transition: all 1s;
 }
 #rightEyeLidContain{
@@ -115,7 +114,15 @@ body{
 }
 #rightEyeLid.selected{
   transform: translateY(-28px) translateZ(0);
-
+}
+#eyeBlack{
+  width: 150px;
+  height: 35px;
+  bottom: 283px;
+  left: 285px;
+  position: absolute;
+  z-index: 3;
+  background-color: black;
 }
 #tongue{
   bottom: 188px;
@@ -220,6 +227,11 @@ body{
   background-image:url('pictures/seinfeld7.gif');
   z-index:-3;
 }
+.tv7{
+  box-shadow: 0px 0px 15px rgba(255,255,255,0.5);
+  background-image:url('pictures/larryD.gif');
+  z-index:-3;
+}
 .tv:before {
   content: ' ';
   display: block;
@@ -256,21 +268,22 @@ body{
 <div class="jerryContain" id="jerrycontain">
 <img src="pictures/jerryhead/lowerHead.png" alt="lowerHead" id="lowerHead" >
 <!--  hair image and div -->
-<div id="hairContain" onmouseover="select('hair')" onmouseout="deselect('hair')"></div>
+<div id="hairContain" onmouseover="select('hair')" onmouseout="deselect('hair')" onclick="projects('gameOfLife')"></div>
 <img src="pictures/jerryhead/hair.png" alt="hair" id="hair" >
+<div id="eyeBlack"></div>
 
 <!--  right eye and eye lid image and div -->
 <img src="pictures/jerryhead/rightEye.png" alt="rightEye" id="rightEye" >
-<div id="rightEyeLidContain" onmouseover="select('rightEyeLid')" onmouseout="deselect('rightEyeLid')"></div>
+<div id="rightEyeLidContain" onmouseover="select('rightEyeLid')" onmouseout="deselect('rightEyeLid')" onclick="projects('simon')"></div>
 <img src="pictures/jerryhead/rightEyeLid.png" alt="rightEyeLid" id="rightEyeLid" >
 
 <!-- left eye and eyelid images and div -->
 <img src="pictures/jerryhead/leftEye.png" alt="leftEye" id="leftEye" >
-<div id="leftEyeLidContain" onmouseover="select('leftEyeLid')" onmouseout="deselect('leftEyeLid')"></div>
+<div id="leftEyeLidContain" onmouseover="select('leftEyeLid')" onmouseout="deselect('leftEyeLid')" onclick="projects('episodePicker')"></div>
 <img src="pictures/jerryhead/leftEyeLid.png" alt="leftEyeLid" id="leftEyeLid" >
 
 <img src="pictures/jerryhead/upperHead.png" alt="upperHead" id="upperHead" >
-<div id="tongueContain" onmouseover="select('tongue')" onmouseout="deselect('tongue')"></div>
+<div id="tongueContain" onmouseover="select('tongue')" onmouseout="deselect('tongue')" onclick="projects('snake')"></div>
 <img src="pictures/jerryhead/tongue.gif" alt="tongue" id="tongue" >
 <img src="pictures/jerryhead/forehead.png" alt="forehead" id="forehead" >
 <img src="pictures/jerryhead/brain.gif" alt="brain" id="brain" >
@@ -325,13 +338,13 @@ body{
       var answer = getRandomInt(0, 3);
       answer = answer + 1;
       var elem = document.getElementById("tv"+answer);
-      elem.className = "static tv" + getRandomInt(0,7);
+      elem.className = "static tv" + getRandomInt(0,8);
       setTimeout(function(){elem.className = "tv";}, 1200);
     }
 
     if(Math.random() > 0.95){
     	if(Math.random() > 0.5){
-    		if(Math.random() > 0.9){
+    		if(Math.random() > 0.95){
     			document.getElementById("rightEye").style.visibility = "hidden";
     			document.getElementById("leftEye").style.visibility = "hidden";
     		}
@@ -378,8 +391,21 @@ body{
 
   function serenity(){
     var audio = new Audio('serenity_echo.wav');
-    audio.volume = 0.1;
+    audio.volume = 0.5;
     audio.play();
+  }
+
+  function projects(projectName){
+    if(projectName == 'gameOfLife'){
+      window.open ('#','_self',false)
+    }else if (projectName == 'simon'){
+      window.open ('http://theFeldProj.servebeer.com/simon/simon.html','_self',false)
+    }else if (projectName == 'snake'){
+      window.open ('#','_self',false)
+    }else if (projectName == 'episodePicker'){
+      window.open ('http://theFeldProj.servebeer.com/picker/seinfeldPicker.html','_self',false)
+    }
+
   }
 
   window.interval = setInterval(checkImages, 50);
