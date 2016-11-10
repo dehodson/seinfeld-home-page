@@ -181,6 +181,11 @@ body{
   background-image:url('pictures/static.gif');
   z-index:-3;
 }
+.tv2{
+  box-shadow: 0px 0px 15px rgba(255,255,255,0.5);
+  background-image:url('pictures/seinfeld.gif');
+  z-index:-3;
+}
 .tv:before {
   content: ' ';
   display: block;
@@ -230,6 +235,12 @@ body{
 <!--<img src="pictures/jerryBig.png" alt="jerryBig" id="jerryBig" height="300" width="300" onclick="action('jerry');">
 <img src="pictures/kramerBig.png" alt="kramerBig" id="kramerBig" height="300" width="300" onclick="action('kramer');">-->
 <script>
+  function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
+
   function select(element){
     document.getElementById(element).className = "selected";
   }
@@ -259,6 +270,14 @@ body{
       }
     }
     phase = phase * -1;
+    if(Math.random() > 0.9){
+      var result = document.getElementsByTagName('img');
+      var answer = getRandomInt(0, result.length - 1);
+      answer = answer + 1;
+      var elem = document.getElementById("tv"+answer);
+      elem.className = "tv2";
+      setTimeout(function(){elem.className = "tv";}, 1200);
+    }
   }
 
   window.interval = null;
@@ -285,6 +304,10 @@ body{
       setTimeout(function(){document.getElementById("cover").style.visibility = "hidden";}, 250);
       setInterval(animate, 500);
       var audio = new Audio('bgmusic.mp3');
+      audio.addEventListener('ended', function() {
+          this.currentTime = 0;
+          this.play();
+      }, false);
       audio.play();
     }
   }
