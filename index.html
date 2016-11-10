@@ -306,9 +306,9 @@ body{
 <img src="pictures/jerryhead/tongue.gif" alt="tongue" id="tongue" >
 <img src="pictures/jerryhead/forehead.png" alt="forehead" id="forehead" >
 <img src="pictures/jerryhead/brain.gif" alt="brain" id="brain" >
-<div id="tv1" class="tv"></div>
-<div id="tv2" class="tv" onclick="serenity()"></div>
-<div id="tv3" class="tv"></div>
+<div id="tv1" class="tv" onclick="playAudio('get_out.wav', 0.8)"></div>
+<div id="tv2" class="tv" onclick="playAudio('serenity_echo.wav', 0.3)"></div>
+<div id="tv3" class="tv" onclick="playAudio('pig_man.wav', 0.6)"></div>
 
 </div>
 
@@ -408,9 +408,9 @@ body{
     }
   }
 
-  function serenity(){
-    var audio = new Audio('serenity_echo.wav');
-    audio.volume = 0.5;
+  function playAudio(file, volume){
+    var audio = new Audio(file);
+    audio.volume = volume;
     audio.play();
   }
 
