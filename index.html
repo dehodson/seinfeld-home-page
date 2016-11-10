@@ -4,7 +4,13 @@
   <title>&#9785; &#9785; &#9785; &#9785; &#9785; &#9785;</title>
 <style type="text/css">
 
-
+*{
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+}
 body{
   background-color: black;
 }
@@ -19,6 +25,16 @@ body{
   margin: auto;
   perspective: 750px;
 }
+#jerryBigDiv{
+  width: 700px;
+  height: 700px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  position: absolute;
+  z-index: 15;
+  margin: auto;
+}
 #hair{
   bottom: 290px;
   left: 192px;
@@ -26,6 +42,7 @@ body{
   z-index: 6;
   transform: rotate(0deg) translate(0px, 0px);
   transition: all .5s;
+
 }
 #hairContain{
   width: 310px;
@@ -265,8 +282,10 @@ body{
 </head>
 <body>
 <div id="cover"></div>
+
 <div class="jerryContain" id="jerrycontain">
-<img src="pictures/jerryhead/lowerHead.png" alt="lowerHead" id="lowerHead" >
+  <div id="jerryBigDiv"></div>
+<img src="pictures/jerryhead/lowerHead.png" alt="lowerHead" id="lowerHead" draggable="false">
 <!--  hair image and div -->
 <div id="hairContain" onmouseover="select('hair')" onmouseout="deselect('hair')" onclick="projects('gameOfLife')"></div>
 <img src="pictures/jerryhead/hair.png" alt="hair" id="hair" >
@@ -397,13 +416,13 @@ body{
 
   function projects(projectName){
     if(projectName == 'gameOfLife'){
-      window.open ('#','_self',false)
+      window.open ('gameoflife/gameOfLife.html','_self',false)
     }else if (projectName == 'simon'){
-      window.open ('http://theFeldProj.servebeer.com/simon/simon.html','_self',false)
+      window.open ('simon/simon.html','_self',false)
     }else if (projectName == 'snake'){
-      window.open ('#','_self',false)
+      window.open ('snake/snake.html','_self',false)
     }else if (projectName == 'episodePicker'){
-      window.open ('http://theFeldProj.servebeer.com/picker/seinfeldPicker.html','_self',false)
+      window.open ('picker/seinfeldPicker.html','_self',false)
     }
 
   }
