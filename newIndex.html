@@ -329,8 +329,8 @@ body{
 
   var phase = -1;
 
-
   var partList = ["lowerHead", "hair", "leftEye","rightEye", "upperHead", "tongue", "rightEyeLid","leftEyeLid", "forehead" ];
+
   function animate(){
     var parts  = partList;
     for(var i = 0; i < parts.length; i++){
@@ -345,13 +345,26 @@ body{
         }
       }
     }
+
     phase = phase * -1;
+
+    //Random Seinfeld clips on TVs
     if(Math.random() > 0.9){
       var answer = getRandomInt(0, 3);
       answer = answer + 1;
       var elem = document.getElementById("tv"+answer);
       elem.className = "tv" + getRandomInt(0,4);
       setTimeout(function(){elem.className = "tv";}, 1200);
+    }
+
+    if(Math.random() > 0.95){
+    	if(Math.random() > 0.5){
+	    	select('rightEyeLid');
+	    	select('leftEyeLid');
+	    }else{
+	    	deselect('rightEyeLid');
+	    	deselect('leftEyeLid');
+	    }
     }
   }
 
@@ -389,6 +402,7 @@ body{
 
   function serenity(){
     var audio = new Audio('serenity_echo.wav');
+    audio.volume = 0.1;
     audio.play();
   }
 
