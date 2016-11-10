@@ -159,6 +159,7 @@ body{
   bottom: 100px;
   left: -100px;
   transform: rotateY(45deg);
+  background-size: 150px 120px;
 }
 #tv2{
   width:  120px;
@@ -167,6 +168,7 @@ body{
   bottom: 275px;
   left: -200px;
   transform: rotateY(-15deg);
+  background-size: 120px 85px;
 }
 #tv3{
   width:  300px;
@@ -175,15 +177,31 @@ body{
   bottom: 100px;
   left: 700px;
   transform: rotateY(-15deg);
+  background-size: 300px 240px;
 }
 .tv{
   box-shadow: 0px 0px 15px rgba(255,255,255,0.5);
   background-image:url('pictures/static.gif');
   z-index:-3;
 }
-.tv2{
+.tv0{
   box-shadow: 0px 0px 15px rgba(255,255,255,0.5);
   background-image:url('pictures/seinfeld.gif');
+  z-index:-3;
+}
+.tv1{
+  box-shadow: 0px 0px 15px rgba(255,255,255,0.5);
+  background-image:url('pictures/seinfeld2.gif');
+  z-index:-3;
+}
+.tv2{
+  box-shadow: 0px 0px 15px rgba(255,255,255,0.5);
+  background-image:url('pictures/seinfeld3.gif');
+  z-index:-3;
+}
+.tv3{
+  box-shadow: 0px 0px 15px rgba(255,255,255,0.5);
+  background-image:url('pictures/seinfeld4.gif');
   z-index:-3;
 }
 .tv:before {
@@ -271,11 +289,10 @@ body{
     }
     phase = phase * -1;
     if(Math.random() > 0.9){
-      var result = document.getElementsByTagName('img');
-      var answer = getRandomInt(0, result.length - 1);
+      var answer = getRandomInt(0, 3);
       answer = answer + 1;
       var elem = document.getElementById("tv"+answer);
-      elem.className = "tv2";
+      elem.className = "tv" + getRandomInt(0,4);
       setTimeout(function(){elem.className = "tv";}, 1200);
     }
   }
