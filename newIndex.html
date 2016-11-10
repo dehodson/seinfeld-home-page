@@ -303,7 +303,7 @@ body{
 <img src="pictures/jerryhead/forehead.png" alt="forehead" id="forehead" >
 <img src="pictures/jerryhead/brain.gif" alt="brain" id="brain" >
 <div id="tv1" class="tv"></div>
-<div id="tv2" class="tv"></div>
+<div id="tv2" class="tv" onclick="serenity()"></div>
 <div id="tv3" class="tv"></div>
 
 </div>
@@ -385,6 +385,11 @@ body{
       }, false);
       audio.play();
     }
+  }
+
+  function serenity(){
+    var audio = new Audio('serenity_echo.wav');
+    audio.play();
   }
 
   window.interval = setInterval(checkImages, 50);
