@@ -175,7 +175,8 @@ body{
   top:0px;
   left:0px;
   opacity:1;
-  transition: opacity 0.25s;
+  transition: opacity 0.75s;
+  cursor: help;
 }
 
 #tv1{
@@ -282,7 +283,7 @@ body{
 </style>
 </head>
 <body>
-<div id="cover"></div>
+<div id="cover" onclick="startTheShow()"></div>
 
 <div class="jerryContain" id="jerrycontain">
 <div id="jerryBigDiv"></div>
@@ -415,18 +416,20 @@ body{
 
   function projects(projectName){
     if(projectName == 'gameOfLife'){
-      window.open ('gameoflife/','_self',false)
+      window.open ('gameoflife/','_blank',false)
     }else if (projectName == 'georgieclicker'){
-      window.open ('georgieclicker/','_self',false)
+      window.open ('georgieclicker/','_blank',false)
     }else if (projectName == 'snake'){
-      window.open ('snake/','_self',false)
+      window.open ('snake/','_blank',false)
     }else if (projectName == 'episodePicker'){
-      window.open ('picker/','_self',false)
+      window.open ('picker/','_blank',false)
     }
 
   }
 
-  window.interval = setInterval(checkImages, 50);
+  function startTheShow() {
+    window.interval = setInterval(checkImages, 50);
+  }
 </script>
 
 </body>
